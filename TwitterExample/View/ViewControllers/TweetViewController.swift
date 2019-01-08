@@ -27,7 +27,10 @@ final class TweetViewController: UIViewController {
         }
         let failure: (Error)->() = { [weak self] (error) in
         }
-        self.service.makeTweet(text,
+        guard let tweet = TweetUpdate(status: text) else {
+            return
+        }
+        self.service.makeTweet(tweet,
                                success: success,
                                failure: failure)
     }

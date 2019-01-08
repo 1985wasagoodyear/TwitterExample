@@ -26,6 +26,9 @@ struct TwitterURLs {
         static let getBearerToken = "https://api.twitter.com/oauth2/token"
         static let invalidateBearerToken = "https://api.twitter.com/oauth2/invalidate_token"
     }
+    struct Tweets {
+        static let update = "https://api.twitter.com/1.1/statuses/update.json"
+    }
 }
 
 struct TwitterCallbackURLs {

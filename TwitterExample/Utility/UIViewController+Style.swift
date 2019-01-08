@@ -30,6 +30,7 @@ extension UIViewController {
 
 extension UIButton {
     func setupStyle() {
+        self.backgroundColor = UIColor.white
         self.layer.cornerRadius = self.frame.size.height / 2.0
         self.setTitleColor(UIColor.themeColor(), for: .normal)
         self.titleLabel?.font = UIFont(name: "MarkerFelt-Wide", size: 25.0)

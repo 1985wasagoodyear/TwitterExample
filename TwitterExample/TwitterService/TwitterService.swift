@@ -51,14 +51,35 @@ final class TwitterService {
     // MARK: - Saved Credentials
     
     func checkForSavedToken() {
-        self.oauthToken = KeychainService.get(name: "oauthToken")
+        if let oauthToken = KeychainService.get(name: "oauthToken") {
+            self.oauthToken = oauthToken
+        }
     }
     
     // MARK: - Update
     
-    func makeTweet(_ text: String,
+    func makeTweet(_ tweet: TweetUpdate,
                    success: @escaping ()->()?,
                    failure: @escaping (Error)->()?) {
+        
+        var urlRequest = URLRequest(url:
+            TwitterURLs.Tweets.update.url()!)
+        
+        // populate the request's data
+        urlRequest.httpMethod = "POST"
+        
+        let httpData = try! JSONEncoder().encode(tweet)
+        
+        urlRequest.httpBody = httpData
+        
+        URLSession.shared.dataTask(with: urlRequest)
+        { (data, response, error) in
+            guard let safeData = data else { return }
+            
+            let json = try! JSONSerialization.jsonObject(with: safeData, options: .mutableLeaves) as! [String:Any]
+            print(json)
+            }.resume()
+        
         
     }
     
