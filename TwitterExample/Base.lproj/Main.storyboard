@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="E0G-GO-atI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,36 +10,118 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Sign In View Controller-->
+        <scene sceneID="1cP-hU-xke">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TwitterExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="SignInViewController" id="Kfx-bd-Qrv" customClass="SignInViewController" customModule="TwitterExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EvJ-fp-xpa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xXT-GP-QyI">
+                                <rect key="frame" x="169" y="325" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j50-Fk-X0L">
-                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <rect key="frame" x="20" y="707" width="335" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="g0v-HS-4a1"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
-                                    <action selector="signInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="26Y-lU-8Ba"/>
+                                    <action selector="signInAction:" destination="Kfx-bd-Qrv" eventType="touchUpInside" id="Y6S-cB-pZ1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xXT-GP-QyI" firstAttribute="centerX" secondItem="URS-hR-u2C" secondAttribute="centerX" id="Bab-5h-wRx"/>
+                            <constraint firstItem="URS-hR-u2C" firstAttribute="trailing" secondItem="j50-Fk-X0L" secondAttribute="trailing" constant="20" id="GwC-c7-mDQ"/>
+                            <constraint firstItem="URS-hR-u2C" firstAttribute="bottom" secondItem="j50-Fk-X0L" secondAttribute="bottom" constant="-100" id="Luf-cv-rSY"/>
+                            <constraint firstItem="xXT-GP-QyI" firstAttribute="centerY" secondItem="URS-hR-u2C" secondAttribute="centerY" id="gL1-fD-hiu"/>
+                            <constraint firstItem="j50-Fk-X0L" firstAttribute="leading" secondItem="URS-hR-u2C" secondAttribute="leading" constant="20" id="sQA-Qb-Tdf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="URS-hR-u2C"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="usv-ec-LWs"/>
+                    <connections>
+                        <outlet property="activitySpinner" destination="xXT-GP-QyI" id="rAB-uK-AZj"/>
+                        <outlet property="signInButton" destination="j50-Fk-X0L" id="FOb-uQ-UK4"/>
+                        <outlet property="signInButtonBottomAlignConstraint" destination="Luf-cv-rSY" id="9ek-nz-rbW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tDa-Jt-0qz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="12" y="132.68365817091455"/>
+        </scene>
+        <!--Tweet View Controller-->
+        <scene sceneID="oKE-Fd-Hh6">
+            <objects>
+                <viewController storyboardIdentifier="TweetViewController" id="6H0-5O-jbk" customClass="TweetViewController" customModule="TwitterExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E7I-03-Q76">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="I tweeted this from an iPhone!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-pY-7Jn">
+                                <rect key="frame" x="20" y="40" width="335" height="507"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwg-nU-kxD">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="bfr-WR-SZl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="signInAction:" destination="Kfx-bd-Qrv" eventType="touchUpInside" id="hIL-5Y-bGL"/>
+                                    <action selector="tweetButtonAction:" destination="6H0-5O-jbk" eventType="touchUpInside" id="qeK-qi-I3T"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j50-Fk-X0L" secondAttribute="trailing" constant="20" id="89k-7u-IK5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="j50-Fk-X0L" secondAttribute="bottom" constant="20" id="GrD-cl-ANn"/>
-                            <constraint firstItem="j50-Fk-X0L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xGq-Un-nqb"/>
+                            <constraint firstItem="qVw-Fg-mIL" firstAttribute="bottom" secondItem="rwg-nU-kxD" secondAttribute="bottom" constant="20" id="6Sm-at-786"/>
+                            <constraint firstItem="qVw-Fg-mIL" firstAttribute="trailing" secondItem="rwg-nU-kxD" secondAttribute="trailing" constant="20" id="Lxl-ny-guG"/>
+                            <constraint firstItem="zgg-pY-7Jn" firstAttribute="trailing" secondItem="rwg-nU-kxD" secondAttribute="trailing" id="YVO-b5-uof"/>
+                            <constraint firstItem="zgg-pY-7Jn" firstAttribute="leading" secondItem="rwg-nU-kxD" secondAttribute="leading" id="aWb-Vy-kgc"/>
+                            <constraint firstItem="rwg-nU-kxD" firstAttribute="top" secondItem="zgg-pY-7Jn" secondAttribute="bottom" constant="40" id="x95-JA-SgI"/>
+                            <constraint firstItem="rwg-nU-kxD" firstAttribute="leading" secondItem="qVw-Fg-mIL" secondAttribute="leading" constant="20" id="xM5-WE-7Y9"/>
+                            <constraint firstItem="zgg-pY-7Jn" firstAttribute="top" secondItem="qVw-Fg-mIL" secondAttribute="top" constant="20" id="xcs-gW-H6R"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="qVw-Fg-mIL"/>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="zgg-pY-7Jn" id="h0j-Xh-W7T"/>
+                        <outlet property="tweetButton" destination="rwg-nU-kxD" id="hLi-Hc-8Q1"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PXF-IY-Ayw" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="786" y="133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wJZ-ZS-2JD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="E0G-GO-atI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="urL-WK-cNN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kfx-bd-Qrv" kind="relationship" relationship="rootViewController" id="8Cj-2F-ecX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a59-TT-8S7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-786" y="133"/>
         </scene>
     </scenes>
 </document>

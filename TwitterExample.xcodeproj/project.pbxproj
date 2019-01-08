@@ -9,20 +9,25 @@
 /* Begin PBXBuildFile section */
 		1DE3DD6356192A9E04F36594 /* Pods_TwitterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB9E83BAB8E7CC99C1000684 /* Pods_TwitterExample.framework */; };
 		3F55AF3321E3B66D0099A11D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AF3221E3B66D0099A11D /* AppDelegate.swift */; };
-		3F55AF3521E3B66D0099A11D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AF3421E3B66D0099A11D /* ViewController.swift */; };
+		3F55AF3521E3B66D0099A11D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AF3421E3B66D0099A11D /* SignInViewController.swift */; };
 		3F55AF3821E3B66D0099A11D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F55AF3621E3B66D0099A11D /* Main.storyboard */; };
 		3F55AF3A21E3B66D0099A11D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F55AF3921E3B66D0099A11D /* Assets.xcassets */; };
 		3F55AF3D21E3B66D0099A11D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F55AF3B21E3B66D0099A11D /* LaunchScreen.storyboard */; };
 		3F55AF4521E3B6C70099A11D /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AF4421E3B6C70099A11D /* TwitterService.swift */; };
 		3F55AF4821E3BB9D0099A11D /* TwitterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AF4721E3BB9D0099A11D /* TwitterKeys.swift */; };
 		3F55AF4A21E3BC4B0099A11D /* TwitterURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AF4921E3BC4B0099A11D /* TwitterURLs.swift */; };
+		3F8A6C3821E3ECBF00B32E0A /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8A6C3721E3ECBF00B32E0A /* TweetViewController.swift */; };
+		3F8A6C3C21E3F76C00B32E0A /* UIViewController+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8A6C3B21E3F76C00B32E0A /* UIViewController+Style.swift */; };
+		3FA6786421E4F2BE00502E77 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */; };
+		3FA6786521E4F2BE00502E77 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */; };
+		3FA6786721E50AA200502E77 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786621E50AA200502E77 /* KeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32840E0B49A40EA09663F89B /* Pods-TwitterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterExample/Pods-TwitterExample.release.xcconfig"; sourceTree = "<group>"; };
 		3F55AF2F21E3B66C0099A11D /* TwitterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F55AF3221E3B66D0099A11D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F55AF3421E3B66D0099A11D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F55AF3421E3B66D0099A11D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3F55AF3721E3B66D0099A11D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F55AF3921E3B66D0099A11D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F55AF3C21E3B66D0099A11D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +35,11 @@
 		3F55AF4421E3B6C70099A11D /* TwitterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
 		3F55AF4721E3BB9D0099A11D /* TwitterKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterKeys.swift; sourceTree = "<group>"; };
 		3F55AF4921E3BC4B0099A11D /* TwitterURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterURLs.swift; sourceTree = "<group>"; };
+		3F8A6C3721E3ECBF00B32E0A /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
+		3F8A6C3B21E3F76C00B32E0A /* UIViewController+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Style.swift"; sourceTree = "<group>"; };
+		3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		3FA6786621E50AA200502E77 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		5EDE360CA791BD5B41D17FAC /* Pods-TwitterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterExample/Pods-TwitterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FB9E83BAB8E7CC99C1000684 /* Pods_TwitterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,9 +86,11 @@
 		3F55AF3121E3B66C0099A11D /* TwitterExample */ = {
 			isa = PBXGroup;
 			children = (
-				3F55AF4621E3BB8C0099A11D /* Twitter */,
+				3FA6786121E4F2AC00502E77 /* Keychain */,
+				3F8A6C3A21E3F76200B32E0A /* Utility */,
+				3F55AF4621E3BB8C0099A11D /* TwitterService */,
+				3F8A6C3D21E3FDA000B32E0A /* View */,
 				3F55AF3221E3B66D0099A11D /* AppDelegate.swift */,
-				3F55AF3421E3B66D0099A11D /* ViewController.swift */,
 				3F55AF3621E3B66D0099A11D /* Main.storyboard */,
 				3F55AF3921E3B66D0099A11D /* Assets.xcassets */,
 				3F55AF3B21E3B66D0099A11D /* LaunchScreen.storyboard */,
@@ -87,14 +99,49 @@
 			path = TwitterExample;
 			sourceTree = "<group>";
 		};
-		3F55AF4621E3BB8C0099A11D /* Twitter */ = {
+		3F55AF4621E3BB8C0099A11D /* TwitterService */ = {
 			isa = PBXGroup;
 			children = (
 				3F55AF4721E3BB9D0099A11D /* TwitterKeys.swift */,
 				3F55AF4921E3BC4B0099A11D /* TwitterURLs.swift */,
 				3F55AF4421E3B6C70099A11D /* TwitterService.swift */,
 			);
-			path = Twitter;
+			path = TwitterService;
+			sourceTree = "<group>";
+		};
+		3F8A6C3321E3EC9B00B32E0A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F55AF3421E3B66D0099A11D /* SignInViewController.swift */,
+				3F8A6C3721E3ECBF00B32E0A /* TweetViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3F8A6C3A21E3F76200B32E0A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3F8A6C3B21E3F76C00B32E0A /* UIViewController+Style.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		3F8A6C3D21E3FDA000B32E0A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F8A6C3321E3EC9B00B32E0A /* ViewControllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FA6786121E4F2AC00502E77 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */,
+				3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */,
+				3FA6786621E50AA200502E77 /* KeychainService.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		A66E9385939942B526CA6B47 /* Frameworks */ = {
@@ -225,9 +272,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8A6C3C21E3F76C00B32E0A /* UIViewController+Style.swift in Sources */,
 				3F55AF4821E3BB9D0099A11D /* TwitterKeys.swift in Sources */,
-				3F55AF3521E3B66D0099A11D /* ViewController.swift in Sources */,
+				3FA6786721E50AA200502E77 /* KeychainService.swift in Sources */,
+				3FA6786421E4F2BE00502E77 /* KeychainConfiguration.swift in Sources */,
+				3F55AF3521E3B66D0099A11D /* SignInViewController.swift in Sources */,
 				3F55AF3321E3B66D0099A11D /* AppDelegate.swift in Sources */,
+				3FA6786521E4F2BE00502E77 /* KeychainPasswordItem.swift in Sources */,
+				3F8A6C3821E3ECBF00B32E0A /* TweetViewController.swift in Sources */,
 				3F55AF4521E3B6C70099A11D /* TwitterService.swift in Sources */,
 				3F55AF4A21E3BC4B0099A11D /* TwitterURLs.swift in Sources */,
 			);
