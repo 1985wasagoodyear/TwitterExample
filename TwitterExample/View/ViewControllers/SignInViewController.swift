@@ -11,6 +11,7 @@ import UIKit
 enum SignInVCState {
     case loading
     case signin
+    case signedIn
 }
 
 final class SignInViewController: UIViewController {
@@ -51,7 +52,9 @@ final class SignInViewController: UIViewController {
     func setupService() {
         self.service = TwitterService()
         // do any additional setup here
-        self.service.checkForSavedToken()
+       // if self.service.savedTokenExists() == true {
+       //     self.state = .signedIn
+       // }
     }
     
     // MARK: - UIControl Setup and Appearance
@@ -59,6 +62,9 @@ final class SignInViewController: UIViewController {
     func adjustUIForState() {
         if self.state == .signin {
             self.showSignIn()
+        }
+        else if self.state == .signedIn {
+            self.goToSignedIn()
         }
         else {
             self.showLoading()
@@ -111,7 +117,10 @@ final class SignInViewController: UIViewController {
 
     @IBAction func signInAction(_ sender: Any) {
         let success: ()->() = { [weak self] in
-            if self != nil { self!.goToSignedIn() }
+            if self != nil {
+                // self!.state = .signedIn
+                self!.goToSignedIn()
+            }
         }
         let failure: (Error)->() = { [weak self] (error) in
             if self != nil { self!.showError(error) }

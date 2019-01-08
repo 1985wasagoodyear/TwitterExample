@@ -39,7 +39,7 @@ final class TwitterService {
                 // handle your stuff here
                 success()
         }, failure: { error in
-                print(error.localizedDescription)
+            print(error.localizedDescription)
             failure(error)
         })
     }
@@ -50,10 +50,13 @@ final class TwitterService {
     
     // MARK: - Saved Credentials
     
-    func checkForSavedToken() {
+    func savedTokenExists() -> Bool {
         if let oauthToken = KeychainService.get(name: "oauthToken") {
             self.oauthToken = oauthToken
+            
+            return true
         }
+        return false
     }
     
     // MARK: - Update
@@ -61,17 +64,37 @@ final class TwitterService {
     func makeTweet(_ tweet: TweetUpdate,
                    success: @escaping ()->()?,
                    failure: @escaping (Error)->()?) {
-        
+        /*
         var urlRequest = URLRequest(url:
             TwitterURLs.Tweets.update.url()!)
         
         // populate the request's data
         urlRequest.httpMethod = "POST"
+        */
         
         let httpData = try! JSONEncoder().encode(tweet)
         
-        urlRequest.httpBody = httpData
+        let plainString = (TwitterURLs.Tweets.update + "?status=" + tweet.status)
         
+        guard let urlString = plainString.urlEncoded() else {
+            //failure()
+            return
+        }
+        let _ = oauthswift.client.post(urlString,
+                                       success:
+            { (response) in
+                print(response.data)
+        }) { (error) in
+          //  if let errorString = (error as NSError).userInfo as? OAuthSwiftError {
+           //    print(errorString["error"])
+          //  }
+        }
+        
+        /*
+        oauthswift.client.post(<#T##urlString: String##String#>, success: <#T##OAuthSwiftHTTPRequest.SuccessHandler?##OAuthSwiftHTTPRequest.SuccessHandler?##(OAuthSwiftResponse) -> Void#>, failure: <#T##OAuthSwiftHTTPRequest.Obj_FailureHandler?##OAuthSwiftHTTPRequest.Obj_FailureHandler?##(Error) -> Void#>)
+        */
+        
+        /*
         URLSession.shared.dataTask(with: urlRequest)
         { (data, response, error) in
             guard let safeData = data else { return }
@@ -79,7 +102,7 @@ final class TwitterService {
             let json = try! JSONSerialization.jsonObject(with: safeData, options: .mutableLeaves) as! [String:Any]
             print(json)
             }.resume()
-        
+        */
         
     }
     

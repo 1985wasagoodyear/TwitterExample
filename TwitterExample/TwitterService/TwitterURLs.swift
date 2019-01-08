@@ -12,6 +12,17 @@ extension String {
     func url() -> URL? {
         return URL(string: self)
     }
+    
+    func urlEncoded() -> String? {
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+    }
+    
+    func encodingForRFC3986() -> String? {
+        let unreserved = "-._~/?"
+        var allowed = CharacterSet.alphanumerics
+        allowed.insert(charactersIn: unreserved)
+        return self.addingPercentEncoding(withAllowedCharacters: allowed)
+    }
 }
 
 struct TwitterURLs {

@@ -20,12 +20,19 @@ final class TweetViewController: UIViewController {
         self.setupStyle()
         self.tweetButton.setupStyle()
         self.textView.setupStyle()
+        self.textView.text = "I am not afraid about sleeping with the lights off"
     }
     @IBAction func tweetButtonAction(_ sender: Any) {
         guard let text = self.textView.text else { return }
         let success: ()->() = { [weak self] in
+            DispatchQueue.main.async {
+                self?.showAlert(text: "Tweet Successful!")
+            }
         }
         let failure: (Error)->() = { [weak self] (error) in
+            DispatchQueue.main.async {
+                self?.showAlert(text: "Tweet Failed!")
+            }
         }
         guard let tweet = TweetUpdate(status: text) else {
             return
@@ -42,5 +49,12 @@ extension TweetViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "TweetViewController") as! TweetViewController
         vc.service = service
         return vc
+    }
+    
+    func showAlert(text: String) {
+        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
