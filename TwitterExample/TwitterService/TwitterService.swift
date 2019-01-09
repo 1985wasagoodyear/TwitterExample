@@ -10,15 +10,11 @@ import Foundation
 import OAuthSwift
 
 final class TwitterService {
+    
     private var oauthswift: OAuth1Swift!
-    private var oauthToken: String!
     
-    // MARK: - Authentication and SignIn
-    
-    func requestToken(success: @escaping ()->()?,
-                      failure: @escaping (Error)->()?) {
+    init() {
         // create an instance and retain it
-        
         oauthswift = OAuth1Swift(
             consumerKey:    TwitterKeys.apiKey,
             consumerSecret: TwitterKeys.apiSecret,
@@ -26,122 +22,94 @@ final class TwitterService {
             authorizeUrl:    TwitterURLs.OAuth1.authorize,
             accessTokenUrl:  TwitterURLs.OAuth1.accessToken
         )
-        // authorize
+    }
+    
+    // MARK: - Authentication and SignIn
+    
+    func requestToken(success: @escaping ()->()?,
+                      failure: @escaping (Error?)->()?) {
+        // if credentials exist, immediately continue with these
+        if self.savedTokenExists() == true {
+            success()
+            return
+        }
+        
+        // authorize, otherwise
         _ = oauthswift.authorize(
             withCallbackURL: TwitterCallbackURLs.welcome.url()!,
-            success: { [weak self] credential, response, parameters in
-                print(credential.oauthToken)
-                print(credential.oauthTokenSecret)
-                print(parameters["user_id"] ?? "")
-                self?.oauthToken = credential.oauthToken
-                KeychainService.update(name: "oauthToken",
+            success: { credential, response, parameters in
+                KeychainService.update(name: KeychainKeys.oauthToken,
                                        password: credential.oauthToken)
-                // handle your stuff here
+                KeychainService.update(name: KeychainKeys.oauthSecret,
+                                       password: credential.oauthTokenSecret)
                 success()
         }, failure: { error in
             print(error.localizedDescription)
             failure(error)
         })
+            
     }
     
+    // handle the callback from webview
     static func handle(url: URL) {
         OAuthSwift.handle(url: url)
     }
     
     // MARK: - Saved Credentials
     
-    func savedTokenExists() -> Bool {
-        if let oauthToken = KeychainService.get(name: "oauthToken") {
-            self.oauthToken = oauthToken
-            
-            return true
+    private func savedTokenExists() -> Bool {
+        guard let oauthToken = KeychainService.get(name: KeychainKeys.oauthToken) else {
+            return false
         }
-        return false
+        guard let oauthSecret = KeychainService.get(name: KeychainKeys.oauthSecret) else {
+            return false
+        }
+        
+        self.oauthswift.client.credential.oauthToken = oauthToken
+        self.oauthswift.client.credential.oauthTokenSecret = oauthSecret
+        return true
     }
     
     // MARK: - Update
     
     func makeTweet(_ tweet: TweetUpdate,
                    success: @escaping ()->()?,
-                   failure: @escaping (Error)->()?) {
-        /*
-        var urlRequest = URLRequest(url:
-            TwitterURLs.Tweets.update.url()!)
+                   failure: @escaping (Error?)->()?) {
         
-        // populate the request's data
-        urlRequest.httpMethod = "POST"
-        */
-        
-        let httpData = try! JSONEncoder().encode(tweet)
-        
-        let plainString = (TwitterURLs.Tweets.update + "?status=" + tweet.status)
-        
-        guard let urlString = plainString.urlEncoded() else {
-            //failure()
+        guard let urlString = tweet.statusURLString() else {
+            failure(nil)
             return
         }
-        let _ = oauthswift.client.post(urlString,
-                                       success:
-            { (response) in
-                print(response.data)
-        }) { (error) in
-          //  if let errorString = (error as NSError).userInfo as? OAuthSwiftError {
-           //    print(errorString["error"])
-          //  }
+        
+        let success: OAuthSwiftHTTPRequest.SuccessHandler =
+        { (response) in
+            success()
         }
         
-        /*
-        oauthswift.client.post(<#T##urlString: String##String#>, success: <#T##OAuthSwiftHTTPRequest.SuccessHandler?##OAuthSwiftHTTPRequest.SuccessHandler?##(OAuthSwiftResponse) -> Void#>, failure: <#T##OAuthSwiftHTTPRequest.Obj_FailureHandler?##OAuthSwiftHTTPRequest.Obj_FailureHandler?##(Error) -> Void#>)
-        */
+        let failure: OAuthSwiftHTTPRequest.FailureHandler =
+        { (error) in
+            print(error)
+            failure(error)
+        }
         
-        /*
-        URLSession.shared.dataTask(with: urlRequest)
-        { (data, response, error) in
-            guard let safeData = data else { return }
-            
-            let json = try! JSONSerialization.jsonObject(with: safeData, options: .mutableLeaves) as! [String:Any]
-            print(json)
-            }.resume()
-        */
-        
+        // perform the request
+        let _ = oauthswift.client.post(urlString,
+                                       success: success,
+                                       failure: failure)
     }
-    
-    // MARK: - Attempt at Native Solution
-    
-    private static func old_requestBearerToken() {
+}
 
-        var urlRequest = URLRequest(url: TwitterURLs.OAuth2.getBearerToken.url()!)
-        urlRequest.httpMethod = "POST"
-        
-        urlRequest.setValue(TwitterKeys.basicAuthentication(),
-                            forHTTPHeaderField: "Authorization")
-        urlRequest.setValue("application/x-www-form-urlencoded;charset=UTF-8",
-                            forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("iOS-TwitterExample", forHTTPHeaderField: "User-Agent")
-        let bodyDict = ["grant_type" : "client_credentials"]
-        let bodyData = try! JSONSerialization.data(withJSONObject: bodyDict,
-                                                   options: .prettyPrinted)
-        urlRequest.httpBody = bodyData
-        
-        URLSession.shared.dataTask(with: urlRequest)
-        { (data, response, error) in
-            guard let safeData = data else { return }
-            
-            let json = try! JSONSerialization.jsonObject(with: safeData, options: .mutableLeaves) as! [String:Any]
-            print(json)
-            }.resume()
+extension TwitterService {
+    func createSavedCredential(_ credential: OAuthSwiftCredential) -> OAuthSwiftCredential {
+        let cred = OAuthSwiftCredential(consumerKey: TwitterKeys.apiKey,
+                                        consumerSecret: TwitterKeys.apiSecret)
+        cred.oauthToken = credential.oauthToken
+        cred.oauthRefreshToken = credential.oauthRefreshToken
+        cred.oauthTokenSecret = credential.oauthTokenSecret
+        cred.oauthTokenExpiresAt = credential.oauthTokenExpiresAt
+        cred.version = credential.version
+        cred.signatureMethod = credential.signatureMethod
+        cred.headersFactory = credential.headersFactory
+        return cred
     }
-    
-    private static func old_requestToken() {
-        let urlRequest = URLRequest(url:
-            TwitterURLs.OAuth1.requestToken.url()!)
-        URLSession.shared.dataTask(with: urlRequest)
-        { (data, response, error) in
-            guard let safeData = data else { return }
-            
-            let json = try! JSONSerialization.jsonObject(with: safeData, options: .mutableLeaves) as! [String:Any]
-            print(json)
-        }.resume()
-    }
-    
 }

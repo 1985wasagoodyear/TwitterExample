@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct KeychainKeys {
+    static let oauthToken = "oauthToken"
+    static let oauthSecret = "oauthSecret"
+}
+
 final class KeychainService {
     
     static func update(name: String, password: String) {
@@ -23,5 +28,13 @@ final class KeychainService {
                                                 accessGroup: nil)
         return try? passwordItem.readPassword()
         
+    }
+    
+    static func deleteAll() {
+        if let items = try? KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName) {
+            for item in items {
+                try? item.deleteItem()
+            }
+        }
     }
 }

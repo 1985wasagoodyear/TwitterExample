@@ -29,7 +29,7 @@ final class TweetViewController: UIViewController {
                 self?.showAlert(text: "Tweet Successful!")
             }
         }
-        let failure: (Error)->() = { [weak self] (error) in
+        let failure: (Error?)->() = { [weak self] (error) in
             DispatchQueue.main.async {
                 self?.showAlert(text: "Tweet Failed!")
             }

@@ -15,6 +15,10 @@ struct TweetUpdate: Encodable {
         if status.count > TweetInfo.characterLimit { return nil }
         self.status = status
     }
+    
+    func statusURLString() -> String? {
+        return (TwitterURLs.Tweets.update + "?status=" + self.status).urlEncoded()
+    }
 }
 
 struct TweetInfo {
