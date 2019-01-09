@@ -44,7 +44,7 @@ final class TwitterService {
                                        password: credential.oauthTokenSecret)
                 success()
         }, failure: { error in
-            print(error.localizedDescription)
+           // print(error.localizedDescription)
             failure(error)
         })
             

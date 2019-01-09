@@ -13,10 +13,6 @@ extension String {
         return URL(string: self)
     }
     
-    func urlEncoded() -> String? {
-        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-    }
-    
     func encodingForRFC3986() -> String? {
         let unreserved = "-._~/?"
         var allowed = CharacterSet.alphanumerics

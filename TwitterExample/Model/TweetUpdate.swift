@@ -17,7 +17,10 @@ struct TweetUpdate: Encodable {
     }
     
     func statusURLString() -> String? {
-        return (TwitterURLs.Tweets.update + "?status=" + self.status).urlEncoded()
+        guard let suffix = self.status.encodingForRFC3986() else {
+            return nil
+        }
+        return TwitterURLs.Tweets.update + "?status=" + suffix
     }
 }
 

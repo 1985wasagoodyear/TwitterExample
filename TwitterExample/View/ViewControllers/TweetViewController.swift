@@ -20,7 +20,7 @@ final class TweetViewController: UIViewController {
         self.setupStyle()
         self.tweetButton.setupStyle()
         self.textView.setupStyle()
-        self.textView.text = "I am not afraid about sleeping with the lights off"
+        self.textView.text = "I am Spider-man!"
     }
     @IBAction func tweetButtonAction(_ sender: Any) {
         guard let text = self.textView.text else { return }
