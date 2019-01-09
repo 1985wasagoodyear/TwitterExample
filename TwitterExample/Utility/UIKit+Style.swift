@@ -1,5 +1,5 @@
 //
-//  UIViewController+Style.swift
+//  UIKit+Style.swift
 //  TwitterExample
 //
 //  Created by Kevin Yu on 1/7/19.

@@ -50,6 +50,7 @@ final class SignInViewController: UIViewController {
     
     func setupService() {
         self.service = TwitterService()
+        // do additional setup here, if necessary
     }
     
     // MARK: - UIControl Setup and Appearance
@@ -145,6 +146,3 @@ final class SignInViewController: UIViewController {
     
 }
 
-extension UIViewController {
-    
-}

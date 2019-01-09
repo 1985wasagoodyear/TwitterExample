@@ -6,8 +6,6 @@
 //  Copyright © 2019 Kevin Yu. All rights reserved.
 //
 
-import Foundation
-
 struct TwitterKeys {
     static let apiKey = "v4r1zdwqVfPH1euxul8zszm5Y"
     static let apiSecret = "tAoqDO5HIQjhGJuPSWasgEDMwJ85yr9cUKMFiZeodgswsbUa4P"

@@ -6,25 +6,6 @@
 //  Copyright © 2019 Kevin Yu. All rights reserved.
 //
 
-import Foundation
-
-extension String {
-    func url() -> URL? {
-        return URL(string: self)
-    }
-    
-    func urlEncoded() -> String? {
-        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-    }
-    
-    func encodingForRFC3986() -> String? {
-        let unreserved = "-._~/?"
-        var allowed = CharacterSet.alphanumerics
-        allowed.insert(charactersIn: unreserved)
-        return self.addingPercentEncoding(withAllowedCharacters: allowed)
-    }
-}
-
 struct TwitterURLs {
     struct OAuth1 {
         static let requestToken = "https://api.twitter.com/oauth/request_token"
