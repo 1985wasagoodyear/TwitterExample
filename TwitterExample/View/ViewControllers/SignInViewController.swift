@@ -39,38 +39,39 @@ final class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupService()
-        self.signInButton.setupStyle()
-        self.setupStyle()
+        setupService()
+        signInButton.setupStyle()
+        setupStyle()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.adjustUIForState()
+        super.viewDidAppear(animated)
+        adjustUIForState()
     }
     
     func setupService() {
-        self.service = TwitterService()
+        service = TwitterService()
         // do additional setup here, if necessary
     }
     
     // MARK: - UIControl Setup and Appearance
     
     func adjustUIForState() {
-        if self.state == .signin {
-            self.showSignIn()
+        if state == .signin {
+            showSignIn()
         }
         else {
-            self.showLoading()
+            showLoading()
         }
     }
     
     func showSignIn() {
-        self.hideLoadingUI()
-        self.showSignInUI()
+        hideLoadingUI()
+        showSignInUI()
     }
     
     func showLoading() {
-        self.hideSignInUI { [unowned self] in
+        hideSignInUI { [unowned self] in
             self.showLoadingUI()
         }
     }
@@ -78,13 +79,13 @@ final class SignInViewController: UIViewController {
     // MARK: - UI Animations
     
     func showLoadingUI() {
-        self.activitySpinner.startAnimating()
+        activitySpinner.startAnimating()
     }
     func hideLoadingUI() {
-        self.activitySpinner.stopAnimating()
+        activitySpinner.stopAnimating()
     }
     func showSignInUI() {
-        self.view.layoutIfNeeded()
+        view.layoutIfNeeded()
         UIView.animate(withDuration: animationDuration,
                        delay: 0.0,
                        options: UIView.AnimationOptions.curveEaseOut,
@@ -94,7 +95,7 @@ final class SignInViewController: UIViewController {
         })
     }
     func hideSignInUI(_ completion: @escaping ()->()) {
-        self.view.layoutIfNeeded()
+        view.layoutIfNeeded()
         UIView.animate(withDuration: animationDuration,
                        animations: { [unowned self] in
             self.signInButtonBottomAlignConstraint.constant = self.signInButtonHiddenHeight
@@ -110,17 +111,14 @@ final class SignInViewController: UIViewController {
 
     @IBAction func signInAction(_ sender: Any) {
         let success: ()->() = { [weak self] in
-            if self != nil {
-                self!.goToSignedIn()
-            }
+            self?.goToSignedIn()
         }
         let failure: (Error?)->() = { [weak self] (error) in
-            if self != nil { self!.showError(error) }
+            self?.showError(error)
         }
-        self.service.requestToken(success: success,
+        service.requestToken(success: success,
                                   failure: failure)
-        
-        self.state = .loading
+        state = .loading
     }
     
     // MARK: - Navigation

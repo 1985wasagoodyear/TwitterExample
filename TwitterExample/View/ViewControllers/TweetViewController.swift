@@ -17,13 +17,13 @@ final class TweetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupStyle()
-        self.tweetButton.setupStyle()
-        self.textView.setupStyle()
-        self.textView.text = "I am Spider-man!"
+        setupStyle()
+        tweetButton.setupStyle()
+        textView.setupStyle()
+        textView.text = "I am Spider-man!"
     }
     @IBAction func tweetButtonAction(_ sender: Any) {
-        guard let text = self.textView.text else { return }
+        guard let text = textView.text else { return }
         let success: ()->() = { [weak self] in
             DispatchQueue.main.async {
                 self?.showAlert(text: "Tweet Successful!")
@@ -37,9 +37,9 @@ final class TweetViewController: UIViewController {
         guard let tweet = TweetUpdate(status: text) else {
             return
         }
-        self.service.makeTweet(tweet,
-                               success: success,
-                               failure: failure)
+        service.makeTweet(tweet,
+                          success: success,
+                          failure: failure)
     }
 }
 
@@ -55,6 +55,6 @@ extension TweetViewController {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -65,8 +65,8 @@ final class TwitterService {
             return false
         }
         
-        self.oauthswift.client.credential.oauthToken = oauthToken
-        self.oauthswift.client.credential.oauthTokenSecret = oauthSecret
+        oauthswift.client.credential.oauthToken = oauthToken
+        oauthswift.client.credential.oauthTokenSecret = oauthSecret
         return true
     }
     
@@ -76,7 +76,7 @@ final class TwitterService {
                    success: @escaping ()->()?,
                    failure: @escaping (Error?)->()?) {
         
-        guard let urlString = tweet.statusURLString() else {
+        guard let urlString = tweet.statusURLString else {
             failure(nil)
             return
         }
@@ -98,7 +98,7 @@ final class TwitterService {
                                        failure: failure)
     }
 }
-
+/*
 extension TwitterService {
     func createSavedCredential(_ credential: OAuthSwiftCredential) -> OAuthSwiftCredential {
         let cred = OAuthSwiftCredential(consumerKey: TwitterKeys.apiKey,
@@ -113,3 +113,4 @@ extension TwitterService {
         return cred
     }
 }
+*/
