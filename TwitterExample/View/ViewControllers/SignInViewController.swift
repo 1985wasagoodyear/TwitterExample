@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 enum SignInVCState {
     case loading
@@ -27,6 +28,7 @@ final class SignInViewController: UIViewController {
     let signInButtonShownHeight: CGFloat = 20.0
     let animationDuration: TimeInterval = 0.30
     
+    
     var state: SignInVCState = .signin {
         didSet {
             self.adjustUIForState()
@@ -34,6 +36,11 @@ final class SignInViewController: UIViewController {
     }
     
     var service: TwitterService!
+    
+    // MARK: - LAContext Properties
+    
+    let context = LAContext()
+    let policy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
     
     // MARK: - Lifecycle Methods
     
@@ -111,7 +118,15 @@ final class SignInViewController: UIViewController {
 
     @IBAction func signInAction(_ sender: Any) {
         let success: ()->() = { [weak self] in
-            self?.goToSignedIn()
+            guard let sSelf = self else { return }
+            let hasBiometrics = sSelf.context.canEvaluatePolicy(sSelf.policy,
+                                                                error: nil)
+            if hasBiometrics {
+                sSelf.biometricsPrompt()
+            }
+            else {
+                sSelf.goToSignedIn()
+            }
         }
         let failure: (Error?)->() = { [weak self] (error) in
             self?.showError(error)
@@ -119,6 +134,35 @@ final class SignInViewController: UIViewController {
         service.requestToken(success: success,
                                   failure: failure)
         state = .loading
+    }
+    
+    func biometricsPrompt() {
+        let success: ()->() = { [weak self] in
+            self?.goToSignedIn()
+        }
+        let failure: (Error?)->() = { [weak self] (error) in
+            self?.showError(error)
+        }
+        
+        var biometricType: String!
+        
+        if #available(iOS 11.0, *) {
+            biometricType = (context.biometryType == .touchID) ? "Touch" : "Face"
+        } else {
+            biometricType = "Touch"
+        }
+        let localReason = "Please sign in with \(biometricType!) ID"
+        
+        context.evaluatePolicy(policy,
+                               localizedReason: localReason)
+        { (biometricsSuccessful, error) in
+            if biometricsSuccessful == true {
+                success()
+            }
+            else {
+                failure(error)
+            }
+        }
     }
     
     // MARK: - Navigation
@@ -140,6 +184,7 @@ final class SignInViewController: UIViewController {
                                handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
+        state = .signin
     }
     
 }
