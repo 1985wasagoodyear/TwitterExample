@@ -9,8 +9,11 @@
 import Foundation
 
 extension String {
-    func url() -> URL? {
-        return URL(string: self)
+    var url: URL {
+        guard let url = URL(string: self) else {
+            fatalError("Could not make url from String!")
+        }
+        return url
     }
     
     func encodingForRFC3986() -> String? {

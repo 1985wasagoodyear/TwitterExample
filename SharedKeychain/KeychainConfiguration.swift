@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct KeychainConfiguration {
-    static let serviceName = "KevinYu.TwitterExample"
+enum KeychainConfiguration {
+    static let serviceName = "yu.TwitterExample"
     
     /*
         Specifying an access group to use with `KeychainPasswordItem` instances
@@ -26,5 +26,5 @@ struct KeychainConfiguration {
         Not specifying an access group to use with `KeychainPasswordItem` instances
         will create items specific to each app.
     */
-    static let accessGroup: String? = nil
+    static let accessGroup: String? = "SY7RWQB994.yu.SharedKeychain"
 }

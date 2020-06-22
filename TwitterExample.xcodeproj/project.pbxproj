@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,10 +20,41 @@
 		3F79F1F621E645B900399AEC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F79F1F521E645B900399AEC /* String+Extension.swift */; };
 		3F8A6C3821E3ECBF00B32E0A /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8A6C3721E3ECBF00B32E0A /* TweetViewController.swift */; };
 		3F8A6C3C21E3F76C00B32E0A /* UIKit+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8A6C3B21E3F76C00B32E0A /* UIKit+Style.swift */; };
-		3FA6786421E4F2BE00502E77 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */; };
-		3FA6786521E4F2BE00502E77 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */; };
-		3FA6786721E50AA200502E77 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786621E50AA200502E77 /* KeychainService.swift */; };
+		3F8C44A3244E26F400CCA794 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C44A2244E26F400CCA794 /* AppDelegate.swift */; };
+		3F8C44A7244E26F400CCA794 /* TokenTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C44A6244E26F400CCA794 /* TokenTestViewController.swift */; };
+		3F8C44AC244E26F700CCA794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F8C44AB244E26F700CCA794 /* Assets.xcassets */; };
+		3F8C44AF244E26F700CCA794 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F8C44AD244E26F700CCA794 /* LaunchScreen.storyboard */; };
+		3F8C44BD244E271400CCA794 /* SharedKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F8C44BB244E271400CCA794 /* SharedKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F8C44C0244E271400CCA794 /* SharedKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8C44B9244E271400CCA794 /* SharedKeychain.framework */; };
+		3F8C44C1244E271400CCA794 /* SharedKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8C44B9244E271400CCA794 /* SharedKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3F8C44C6244E272300CCA794 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */; };
+		3F8C44C7244E272300CCA794 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */; };
+		3F8C44C8244E272300CCA794 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6786621E50AA200502E77 /* KeychainService.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F8C44BE244E271400CCA794 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F55AF2721E3B66C0099A11D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F8C44B8244E271400CCA794;
+			remoteInfo = SharedKeychain;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3F8C44C5244E271400CCA794 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3F8C44C1244E271400CCA794 /* SharedKeychain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		32840E0B49A40EA09663F89B /* Pods-TwitterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterExample/Pods-TwitterExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -41,6 +72,17 @@
 		3F79F1F521E645B900399AEC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3F8A6C3721E3ECBF00B32E0A /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetViewController.swift; sourceTree = "<group>"; };
 		3F8A6C3B21E3F76C00B32E0A /* UIKit+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Style.swift"; sourceTree = "<group>"; };
+		3F8C449B244E25D500CCA794 /* TwitterExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TwitterExample.entitlements; sourceTree = "<group>"; };
+		3F8C44A0244E26F400CCA794 /* KeychainTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeychainTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F8C44A2244E26F400CCA794 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F8C44A6244E26F400CCA794 /* TokenTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenTestViewController.swift; sourceTree = "<group>"; };
+		3F8C44AB244E26F700CCA794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F8C44AE244E26F700CCA794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F8C44B0244E26F700CCA794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F8C44B9244E271400CCA794 /* SharedKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SharedKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F8C44BB244E271400CCA794 /* SharedKeychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedKeychain.h; sourceTree = "<group>"; };
+		3F8C44BC244E271400CCA794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F8C44C9244E274400CCA794 /* KeychainTester.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeychainTester.entitlements; sourceTree = "<group>"; };
 		3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		3FA6786621E50AA200502E77 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -54,6 +96,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DE3DD6356192A9E04F36594 /* Pods_TwitterExample.framework in Frameworks */,
+				3F8C44C0244E271400CCA794 /* SharedKeychain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8C449D244E26F400CCA794 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8C44B6244E271400CCA794 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +129,9 @@
 		3F55AF2621E3B66C0099A11D = {
 			isa = PBXGroup;
 			children = (
+				3F8C44BA244E271400CCA794 /* SharedKeychain */,
 				3F55AF3121E3B66C0099A11D /* TwitterExample */,
+				3F8C44A1244E26F400CCA794 /* KeychainTester */,
 				3F55AF3021E3B66C0099A11D /* Products */,
 				3C869BA7A6FECFC786EB3BAB /* Pods */,
 				A66E9385939942B526CA6B47 /* Frameworks */,
@@ -83,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				3F55AF2F21E3B66C0099A11D /* TwitterExample.app */,
+				3F8C44A0244E26F400CCA794 /* KeychainTester.app */,
+				3F8C44B9244E271400CCA794 /* SharedKeychain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +151,7 @@
 		3F55AF3121E3B66C0099A11D /* TwitterExample */ = {
 			isa = PBXGroup;
 			children = (
-				3FA6786121E4F2AC00502E77 /* Keychain */,
+				3F8C449B244E25D500CCA794 /* TwitterExample.entitlements */,
 				3F8A6C3A21E3F76200B32E0A /* Utility */,
 				3F55AF4621E3BB8C0099A11D /* TwitterService */,
 				3F63ED9521E51F4B0012D1F6 /* Model */,
@@ -148,14 +209,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		3FA6786121E4F2AC00502E77 /* Keychain */ = {
+		3F8C44A1244E26F400CCA794 /* KeychainTester */ = {
+			isa = PBXGroup;
+			children = (
+				3F8C44C9244E274400CCA794 /* KeychainTester.entitlements */,
+				3F8C44A2244E26F400CCA794 /* AppDelegate.swift */,
+				3F8C44A6244E26F400CCA794 /* TokenTestViewController.swift */,
+				3F8C44AB244E26F700CCA794 /* Assets.xcassets */,
+				3F8C44AD244E26F700CCA794 /* LaunchScreen.storyboard */,
+				3F8C44B0244E26F700CCA794 /* Info.plist */,
+			);
+			path = KeychainTester;
+			sourceTree = "<group>";
+		};
+		3F8C44BA244E271400CCA794 /* SharedKeychain */ = {
 			isa = PBXGroup;
 			children = (
 				3FA6786221E4F2BE00502E77 /* KeychainConfiguration.swift */,
 				3FA6786321E4F2BE00502E77 /* KeychainPasswordItem.swift */,
 				3FA6786621E50AA200502E77 /* KeychainService.swift */,
+				3F8C44BB244E271400CCA794 /* SharedKeychain.h */,
+				3F8C44BC244E271400CCA794 /* Info.plist */,
 			);
-			path = Keychain;
+			path = SharedKeychain;
 			sourceTree = "<group>";
 		};
 		A66E9385939942B526CA6B47 /* Frameworks */ = {
@@ -168,6 +244,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3F8C44B4244E271400CCA794 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F8C44BD244E271400CCA794 /* SharedKeychain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		3F55AF2E21E3B66C0099A11D /* TwitterExample */ = {
 			isa = PBXNativeTarget;
@@ -178,15 +265,52 @@
 				3F55AF2C21E3B66C0099A11D /* Frameworks */,
 				3F55AF2D21E3B66C0099A11D /* Resources */,
 				FAD3D29753EA6AAA82934D1E /* [CP] Embed Pods Frameworks */,
+				3F8C44C5244E271400CCA794 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3F8C44BF244E271400CCA794 /* PBXTargetDependency */,
 			);
 			name = TwitterExample;
 			productName = TwitterExample;
 			productReference = 3F55AF2F21E3B66C0099A11D /* TwitterExample.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3F8C449F244E26F400CCA794 /* KeychainTester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F8C44B1244E26F700CCA794 /* Build configuration list for PBXNativeTarget "KeychainTester" */;
+			buildPhases = (
+				3F8C449C244E26F400CCA794 /* Sources */,
+				3F8C449D244E26F400CCA794 /* Frameworks */,
+				3F8C449E244E26F400CCA794 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeychainTester;
+			productName = KeychainTester;
+			productReference = 3F8C44A0244E26F400CCA794 /* KeychainTester.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F8C44B8244E271400CCA794 /* SharedKeychain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F8C44C2244E271400CCA794 /* Build configuration list for PBXNativeTarget "SharedKeychain" */;
+			buildPhases = (
+				3F8C44B4244E271400CCA794 /* Headers */,
+				3F8C44B5244E271400CCA794 /* Sources */,
+				3F8C44B6244E271400CCA794 /* Frameworks */,
+				3F8C44B7244E271400CCA794 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharedKeychain;
+			productName = SharedKeychain;
+			productReference = 3F8C44B9244E271400CCA794 /* SharedKeychain.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,12 +318,18 @@
 		3F55AF2721E3B66C0099A11D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Kevin Yu";
 				TargetAttributes = {
 					3F55AF2E21E3B66C0099A11D = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					3F8C449F244E26F400CCA794 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					3F8C44B8244E271400CCA794 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -217,6 +347,8 @@
 			projectRoot = "";
 			targets = (
 				3F55AF2E21E3B66C0099A11D /* TwitterExample */,
+				3F8C449F244E26F400CCA794 /* KeychainTester */,
+				3F8C44B8244E271400CCA794 /* SharedKeychain */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +361,22 @@
 				3F55AF3D21E3B66D0099A11D /* LaunchScreen.storyboard in Resources */,
 				3F55AF3A21E3B66D0099A11D /* Assets.xcassets in Resources */,
 				3F55AF3821E3B66D0099A11D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8C449E244E26F400CCA794 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F8C44AF244E26F700CCA794 /* LaunchScreen.storyboard in Resources */,
+				3F8C44AC244E26F700CCA794 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8C44B7244E271400CCA794 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,20 +411,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TwitterExample/Pods-TwitterExample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TwitterExample/Pods-TwitterExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TwitterExample/Pods-TwitterExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TwitterExample/Pods-TwitterExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TwitterExample/Pods-TwitterExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -288,20 +431,44 @@
 			files = (
 				3F8A6C3C21E3F76C00B32E0A /* UIKit+Style.swift in Sources */,
 				3F55AF4821E3BB9D0099A11D /* TwitterKeys.swift in Sources */,
-				3FA6786721E50AA200502E77 /* KeychainService.swift in Sources */,
-				3FA6786421E4F2BE00502E77 /* KeychainConfiguration.swift in Sources */,
 				3F79F1F621E645B900399AEC /* String+Extension.swift in Sources */,
 				3F55AF3521E3B66D0099A11D /* SignInViewController.swift in Sources */,
 				3F55AF3321E3B66D0099A11D /* AppDelegate.swift in Sources */,
 				3F63ED9721E51F5B0012D1F6 /* TweetUpdate.swift in Sources */,
-				3FA6786521E4F2BE00502E77 /* KeychainPasswordItem.swift in Sources */,
 				3F8A6C3821E3ECBF00B32E0A /* TweetViewController.swift in Sources */,
 				3F55AF4521E3B6C70099A11D /* TwitterService.swift in Sources */,
 				3F55AF4A21E3BC4B0099A11D /* TwitterURLs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F8C449C244E26F400CCA794 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F8C44A7244E26F400CCA794 /* TokenTestViewController.swift in Sources */,
+				3F8C44A3244E26F400CCA794 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8C44B5244E271400CCA794 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F8C44C7244E272300CCA794 /* KeychainConfiguration.swift in Sources */,
+				3F8C44C6244E272300CCA794 /* KeychainPasswordItem.swift in Sources */,
+				3F8C44C8244E272300CCA794 /* KeychainService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F8C44BF244E271400CCA794 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F8C44B8244E271400CCA794 /* SharedKeychain */;
+			targetProxy = 3F8C44BE244E271400CCA794 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F55AF3621E3B66D0099A11D /* Main.storyboard */ = {
@@ -316,6 +483,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F55AF3C21E3B66D0099A11D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3F8C44AD244E26F700CCA794 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F8C44AE244E26F700CCA794 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -443,8 +618,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EDE360CA791BD5B41D17FAC /* Pods-TwitterExample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TwitterExample/TwitterExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7RWQB994;
 				INFOPLIST_FILE = TwitterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -462,8 +640,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 32840E0B49A40EA09663F89B /* Pods-TwitterExample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TwitterExample/TwitterExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7RWQB994;
 				INFOPLIST_FILE = TwitterExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -474,6 +655,102 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F8C44B2244E26F700CCA794 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeychainTester/KeychainTester.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7RWQB994;
+				INFOPLIST_FILE = KeychainTester/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yu.KeychainTester;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F8C44B3244E26F700CCA794 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeychainTester/KeychainTester.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7RWQB994;
+				INFOPLIST_FILE = KeychainTester/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yu.KeychainTester;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F8C44C3244E271400CCA794 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = SY7RWQB994;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SharedKeychain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yu.SharedKeychain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3F8C44C4244E271400CCA794 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = SY7RWQB994;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SharedKeychain/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yu.SharedKeychain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -494,6 +771,24 @@
 			buildConfigurations = (
 				3F55AF4221E3B66D0099A11D /* Debug */,
 				3F55AF4321E3B66D0099A11D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F8C44B1244E26F700CCA794 /* Build configuration list for PBXNativeTarget "KeychainTester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F8C44B2244E26F700CCA794 /* Debug */,
+				3F8C44B3244E26F700CCA794 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F8C44C2244E271400CCA794 /* Build configuration list for PBXNativeTarget "SharedKeychain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F8C44C3244E271400CCA794 /* Debug */,
+				3F8C44C4244E271400CCA794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

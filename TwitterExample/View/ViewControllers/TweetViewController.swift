@@ -10,10 +10,18 @@ import UIKit
 
 final class TweetViewController: UIViewController {
     
-    var service: TwitterService!
-    
     @IBOutlet var textView: UITextView!
     @IBOutlet var tweetButton: UIButton!
+    
+    lazy var signOutTapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(signOutAction))
+        gesture.numberOfTapsRequired = 2
+        view.isUserInteractionEnabled = true
+        return gesture
+    }()
+    
+    var service: TwitterService!
+    weak var navigationDelegate: NavigationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +29,9 @@ final class TweetViewController: UIViewController {
         tweetButton.setupStyle()
         textView.setupStyle()
         textView.text = "I am Spider-man!"
+        view.addGestureRecognizer(signOutTapGesture)
     }
+    
     @IBAction func tweetButtonAction(_ sender: Any) {
         guard let text = textView.text else { return }
         let success: ()->() = { [weak self] in
@@ -40,6 +50,13 @@ final class TweetViewController: UIViewController {
         service.makeTweet(tweet,
                           success: success,
                           failure: failure)
+    }
+
+    @objc func signOutAction() {
+        service.signOut {
+            self.navigationDelegate?.willReturn()
+            self.dismiss(animated: true)
+        }
     }
 }
 

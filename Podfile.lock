@@ -5,12 +5,12 @@ DEPENDENCIES:
   - OAuthSwift (~> 1.2.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - OAuthSwift
 
 SPEC CHECKSUMS:
   OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
 
-PODFILE CHECKSUM: df11aacd0342251fbc7099857924704aecb5ea0e
+PODFILE CHECKSUM: 06f402aac1285c6777ef486712d4fde2fcf02078
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.1

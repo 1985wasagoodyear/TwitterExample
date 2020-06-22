@@ -8,6 +8,7 @@
 
 import Foundation
 import OAuthSwift
+import SharedKeychain
 
 final class TwitterService {
     
@@ -29,14 +30,16 @@ final class TwitterService {
     func requestToken(success: @escaping ()->()?,
                       failure: @escaping (Error?)->()?) {
         // if credentials exist, immediately continue with these
+        //signOut {
+        //}
         if self.savedTokenExists() == true {
             success()
             return
         }
         
         // authorize, otherwise
-        _ = oauthswift.authorize(
-            withCallbackURL: TwitterCallbackURLs.welcome.url()!,
+        let service = oauthswift.authorize(
+            withCallbackURL: TwitterCallbackURLs.welcome.url,
             success: { credential, response, parameters in
                 KeychainService.update(name: KeychainKeys.oauthToken,
                                        password: credential.oauthToken)
@@ -48,6 +51,12 @@ final class TwitterService {
             failure(error)
         })
             
+    }
+    
+    func signOut(_ completion: @escaping ()->Void) {
+        KeychainService.delete(name: KeychainKeys.oauthToken)
+        KeychainService.delete(name: KeychainKeys.oauthSecret)
+        completion()
     }
     
     // handle the callback from webview
@@ -98,19 +107,3 @@ final class TwitterService {
                                        failure: failure)
     }
 }
-/*
-extension TwitterService {
-    func createSavedCredential(_ credential: OAuthSwiftCredential) -> OAuthSwiftCredential {
-        let cred = OAuthSwiftCredential(consumerKey: TwitterKeys.apiKey,
-                                        consumerSecret: TwitterKeys.apiSecret)
-        cred.oauthToken = credential.oauthToken
-        cred.oauthRefreshToken = credential.oauthRefreshToken
-        cred.oauthTokenSecret = credential.oauthTokenSecret
-        cred.oauthTokenExpiresAt = credential.oauthTokenExpiresAt
-        cred.version = credential.version
-        cred.signatureMethod = credential.signatureMethod
-        cred.headersFactory = credential.headersFactory
-        return cred
-    }
-}
-*/

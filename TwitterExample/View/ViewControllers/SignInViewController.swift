@@ -13,6 +13,10 @@ enum SignInVCState {
     case signin
 }
 
+protocol NavigationDelegate: AnyObject {
+    func willReturn()
+}
+
 final class SignInViewController: UIViewController {
 
     // MARK: - Storyboard Outlets
@@ -51,7 +55,6 @@ final class SignInViewController: UIViewController {
     
     func setupService() {
         service = TwitterService()
-        // do additional setup here, if necessary
     }
     
     // MARK: - UIControl Setup and Appearance
@@ -71,8 +74,8 @@ final class SignInViewController: UIViewController {
     }
     
     func showLoading() {
-        hideSignInUI { [unowned self] in
-            self.showLoadingUI()
+        hideSignInUI { [weak self] in
+            self?.showLoadingUI()
         }
     }
     
@@ -89,7 +92,8 @@ final class SignInViewController: UIViewController {
         UIView.animate(withDuration: animationDuration,
                        delay: 0.0,
                        options: UIView.AnimationOptions.curveEaseOut,
-                       animations: { [unowned self] in
+                       animations: { [weak self] in
+            guard let self = self else { return }
             self.signInButtonBottomAlignConstraint.constant = self.signInButtonShownHeight
             self.view.layoutIfNeeded()
         })
@@ -97,7 +101,8 @@ final class SignInViewController: UIViewController {
     func hideSignInUI(_ completion: @escaping ()->()) {
         view.layoutIfNeeded()
         UIView.animate(withDuration: animationDuration,
-                       animations: { [unowned self] in
+                       animations: { [weak self] in
+            guard let self = self else { return }
             self.signInButtonBottomAlignConstraint.constant = self.signInButtonHiddenHeight
             self.view.layoutIfNeeded()
         }) { (finished) in
@@ -125,22 +130,30 @@ final class SignInViewController: UIViewController {
     
     func goToSignedIn() {
         let vc = TweetViewController.initWithService(service)
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration)
-        { [unowned self] in
-            self.present(vc, animated: true, completion: nil)
+        vc.navigationDelegate = self
+        let deadline: DispatchTime = .now() + animationDuration
+        DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
+            self?.present(vc, animated: true, completion: nil)
         }
     }
     
     func showError(_ error: Error?) {
-        let alert = UIAlertController(title: error?.localizedDescription ?? "An Error Occurred",
+        let title = error?.localizedDescription ?? "An Error Occurred"
+        let alert = UIAlertController(title: title,
                                       message: "",
                                       preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK",
                                style: .default,
                                handler: nil)
         alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
 }
 
+extension SignInViewController: NavigationDelegate {
+    func willReturn() {
+        state = .signin
+        adjustUIForState()
+    }
+}
